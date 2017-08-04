@@ -21,7 +21,7 @@ Password: test1234
 3. Store AWS EC2/RDS instances CloudWatch metric data while load testing is occurring
 4. View test results and metrics data
 
-##Docker Basic Installation
+## Docker Basic Installation
 
 1. Install Virtual Box https://www.virtualbox.org/wiki/Downloads
 2. Install Docker Toolbox https://www.docker.com/docker-toolbox
@@ -29,7 +29,7 @@ Password: test1234
   * https://github.com/docker/compose/releases/tag/1.5.0rc1
   * URL includes two commands to curl and install the new docker-compose
 
-##LoadTestServer Docker Installation
+## LoadTestServer Docker Installation
 
 1. docker-machine create --driver virtualbox lts
   * Specifying VirtualBox, only tested with that driver on Mac OSX
@@ -46,7 +46,7 @@ Password: test1234
   * I have noticed timeouts on initial starting once and awhile.  Usually occurs because it is
   generating assets on request.
 
-##Docker Important Commands
+## Docker Important Commands
 
 * docker-machine ls
   * Lists machines that are currently running/stopped/etc...
