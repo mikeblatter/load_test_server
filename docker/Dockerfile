@@ -31,10 +31,11 @@ ADD ./code/Gemfile.lock Gemfile.lock
 RUN bundle install
 
 # Add rails project to project directory
-ADD ./code /loadtestserver
+RUN mkdir /opt/loadtestserver
+ADD ./code /opt/loadtestserver
 
 # set WORKDIR
-WORKDIR /loadtestserver
+WORKDIR /opt/loadtestserver
 
 RUN bundle exec rake assets:precompile
 
@@ -44,5 +45,6 @@ RUN mkdir -p /etc/rails/keys
 # Cleanup
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Publish port 8080
-EXPOSE 8080
+# Default
+ENTRYPOINT ["/opt/loadtestserver/manage.sh"]
+CMD ["dev"]

@@ -29,7 +29,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ../code/:/loadtestserver
+      - ../code/:/opt/loadtestserver
     command: bundle exec unicorn -E development -c config/unicorn_docker.rb
     environment:
       LTS_DATABASE_HOST_DEV: "db"
@@ -54,7 +54,7 @@ services:
       context: ../
       dockerfile: docker/Dockerfile
     volumes:
-      - ../code/:/loadtestserver
+      - ../code/:/opt/loadtestserver
     command: bundle exec rake jobs:work
     environment:
       LTS_DATABASE_HOST_DEV: "db"
