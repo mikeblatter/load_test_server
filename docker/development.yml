@@ -1,0 +1,69 @@
+version: "3"
+
+services:
+  proxy:
+    image: jwilder/nginx-proxy:latest
+    ports:
+      - "88:80"
+    volumes:
+      - "/var/run/docker.sock:/tmp/docker.sock"
+  web:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ../code/:/rails
+    command: "bundle exec unicorn -E development -c config/unicorn_docker.rb"
+    environment:
+      LTS_DATABASE_HOST_DEV: 'db'
+      LTS_DATABASE_USER_DEV: 'root'
+      LTS_DATABASE_PASS_DEV: 'pass'
+
+      LTS_DATABASE_HOST_PROD: 'db'
+      LTS_DATABASE_USER_PROD: 'root'
+      LTS_DATABASE_PASS_PROD: 'pass'
+
+      LTS_SECRET_KEY_BASE: "5k4jzPRICwBFzf6h7QFxMegHNf1GIIaPbyqqvfLrLCSPmayfs6gjTK5bhCJD0Cu5UO3UIPWAO0DIllynjVvkkp3rcjgeVt4Pff1x"
+      LTS_ENCRYPTION_KEY: "lrpGN6tV0yCGzA9kRyEPm1yqU5ZyZH6aWKCThXY1eXOWnRY1LEXwEleaOkHRRbjZ7g8TN3JHbetxsPNbLpfvSkqPVj0yqgPsbMTp"
+
+      RAILS_ENV: "development"
+    links:
+      - db
+      - redis
+      - cache
+  worker:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ../code/:/rails
+    command: "bundle exec rake jobs:work"
+    environment:
+      LTS_DATABASE_HOST_DEV: 'db'
+      LTS_DATABASE_USER_DEV: 'root'
+      LTS_DATABASE_PASS_DEV: 'pass'
+
+      LTS_DATABASE_HOST_PROD: 'db'
+      LTS_DATABASE_USER_PROD: 'root'
+      LTS_DATABASE_PASS_PROD: 'pass'
+
+      LTS_SECRET_KEY_BASE: "5k4jzPRICwBFzf6h7QFxMegHNf1GIIaPbyqqvfLrLCSPmayfs6gjTK5bhCJD0Cu5UO3UIPWAO0DIllynjVvkkp3rcjgeVt4Pff1x"
+      LTS_ENCRYPTION_KEY: "lrpGN6tV0yCGzA9kRyEPm1yqU5ZyZH6aWKCThXY1eXOWnRY1LEXwEleaOkHRRbjZ7g8TN3JHbetxsPNbLpfvSkqPVj0yqgPsbMTp"
+
+      RAILS_ENV: "development"
+    links:
+      - db
+      - redis
+      - cache
+  db:
+    image: mysql:5.7.7
+    environment:
+      MYSQL_ROOT_PASSWORD: "pass"
+    ports:
+      - "3306:3306"
+  redis:
+    image: redis
+  cache:
+    image: memcached
