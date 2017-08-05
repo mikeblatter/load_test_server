@@ -22,7 +22,7 @@ Password: test1234
 ## Basic Installation
 
 1. Install Docker https://www.docker.com
-2. Run `./helpers/build.sh` then `./helpers/run.sh` to run locally
+2. Run `./helpers/build.sh development.yml` then `./helpers/run.sh development.yml` to run locally
 3. Go to http://localhost:88
    - Using 88 port locally so its not interfering with other services
 
