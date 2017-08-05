@@ -9,4 +9,4 @@ if [ -z $COMPOSE_FILE_NAME ]; then
     exit 2
 fi
 
-docker-compose -f docker/$COMPOSE_FILE_NAME -p $PROJECT_NAME run api test
+docker-compose -f docker/$COMPOSE_FILE_NAME -p $PROJECT_NAME run web test
