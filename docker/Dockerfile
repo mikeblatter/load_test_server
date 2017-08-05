@@ -12,8 +12,5 @@ ADD /code/Gemfile /rails/Gemfile
 ADD /code/Gemfile.lock /rails/Gemfile.lock
 
 RUN bundle install
-ADD ./code/ /rails
 
-# Default
-ENTRYPOINT ["/rails/manage.sh"]
-CMD ["dev"]
+ADD ./code/ /rails

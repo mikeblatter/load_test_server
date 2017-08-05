@@ -10,3 +10,7 @@ if [ -z $COMPOSE_FILE_NAME ]; then
 fi
 
 docker-compose -f docker/$COMPOSE_FILE_NAME -p $PROJECT_NAME build
+
+# Run setup
+docker-compose -f docker/$COMPOSE_FILE_NAME -p $PROJECT_NAME run web bundle exec rake db:setup_initial
+docker-compose -f docker/$COMPOSE_FILE_NAME -p $PROJECT_NAME run web bundle exec rake assets:precompile

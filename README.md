@@ -1,6 +1,7 @@
 # LoadTestServer
 
 LoadTestServer is a Rails app that allows you to create, run, and store results for load tests. Fully dockerized.
+
 ## Initial Login
 
 This gets added when running rake db:setup_initial.  Will only add if there are no users in the database,
@@ -40,7 +41,7 @@ Password: test1234
 * docker-machine rm NAME_OF_DOCKER_MACHINE
   * Removes machine
   
-# Contributors
+## Contributors
 
 1. [Mike Blatter](https://github.com/mikeblatter)
 2. [Erik Stockmeier](https://github.com/erikdstock)

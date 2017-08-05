@@ -14,8 +14,8 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ../code/:/opt/loadtestserver
-    command: dev
+      - ../code/:/rails
+    command: "bundle exec unicorn -E development -c config/unicorn_docker.rb"
     environment:
       LTS_DATABASE_HOST_DEV: 'db'
       LTS_DATABASE_USER_DEV: 'root'
@@ -38,8 +38,8 @@ services:
       context: ../
       dockerfile: docker/Dockerfile
     volumes:
-      - ../code/:/opt/loadtestserver
-    command: worker
+      - ../code/:/rails
+    command: "bundle exec rake jobs:work"
     environment:
       LTS_DATABASE_HOST_DEV: 'db'
       LTS_DATABASE_USER_DEV: 'root'
@@ -61,6 +61,8 @@ services:
     image: mysql:5.7.7
     environment:
       MYSQL_ROOT_PASSWORD: "pass"
+    ports:
+      - "3306:3306"
   redis:
     image: redis
   cache:
