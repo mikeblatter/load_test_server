@@ -24,11 +24,11 @@ Password: test1234
 ## Basic Installation
 
 1. Install Docker https://www.docker.com
-2. Run build.sh then run.sh to run locally
+2. Run `./build.sh` then `./run.sh` to run locally
 
 ## Docker Important Commands
 
-* docker-machine ls
+* docker-machine ps
   * Lists machines that are currently running/stopped/etc...
 * docker-machine env NAME_OF_MACHINE
   * Replace NAME_OF_MACHINE with the name given in docker-machine ls
