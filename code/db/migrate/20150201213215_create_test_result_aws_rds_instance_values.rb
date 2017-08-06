@@ -1,4 +1,4 @@
-class CreateTestResultAwsRdsInstanceValues < ActiveRecord::Migration
+class CreateTestResultAwsRdsInstanceValues < ActiveRecord::Migration[5.1]
   def change
     create_table :aws_rds_instance_data do |t|
       t.belongs_to :test_result_aws_rds_instance, index: true

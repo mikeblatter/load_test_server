@@ -1,12 +1,6 @@
 version: "3"
 
 services:
-  proxy:
-    image: jwilder/nginx-proxy:latest
-    ports:
-      - "88:80"
-    volumes:
-      - "/var/run/docker.sock:/tmp/docker.sock"
   web:
     build:
       context: ../

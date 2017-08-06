@@ -1,4 +1,4 @@
-class CreateUserScenarioSteps < ActiveRecord::Migration
+class CreateUserScenarioSteps < ActiveRecord::Migration[5.1]
   def change
     create_table :user_scenario_steps do |t|
       t.references :user_scenario, index: true

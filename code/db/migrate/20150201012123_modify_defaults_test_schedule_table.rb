@@ -1,4 +1,4 @@
-class ModifyDefaultsTestScheduleTable < ActiveRecord::Migration
+class ModifyDefaultsTestScheduleTable < ActiveRecord::Migration[5.1]
   def change
     change_column :test_schedules, :schedule_now, :boolean, :default => true
     change_column :test_schedules, :started, :boolean, :default => false

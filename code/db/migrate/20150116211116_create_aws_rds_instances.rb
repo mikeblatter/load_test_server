@@ -1,4 +1,4 @@
-class CreateAwsRdsInstances < ActiveRecord::Migration
+class CreateAwsRdsInstances < ActiveRecord::Migration[5.1]
   def change
     create_table :aws_rds_instances do |t|
       t.references :aws_account, index: true

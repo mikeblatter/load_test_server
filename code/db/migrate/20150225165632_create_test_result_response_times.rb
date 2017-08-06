@@ -1,4 +1,4 @@
-class CreateTestResultResponseTimes < ActiveRecord::Migration
+class CreateTestResultResponseTimes < ActiveRecord::Migration[5.1]
   def change
     create_table :test_result_response_times do |t|
       t.belongs_to :test_result, index: true

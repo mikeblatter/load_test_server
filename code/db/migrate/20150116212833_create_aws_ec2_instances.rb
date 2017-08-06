@@ -1,4 +1,4 @@
-class CreateAwsEc2Instances < ActiveRecord::Migration
+class CreateAwsEc2Instances < ActiveRecord::Migration[5.1]
   def change
     create_table :aws_ec2_instances do |t|
       t.references :aws_account, index: true

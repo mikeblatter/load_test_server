@@ -1,4 +1,4 @@
-class CreateTestResultResponseCodes < ActiveRecord::Migration
+class CreateTestResultResponseCodes < ActiveRecord::Migration[5.1]
   def change
     create_table :test_result_response_codes do |t|
       t.belongs_to :test_result, index: true

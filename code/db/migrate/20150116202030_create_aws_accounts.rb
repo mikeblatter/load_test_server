@@ -1,4 +1,4 @@
-class CreateAwsAccounts < ActiveRecord::Migration
+class CreateAwsAccounts < ActiveRecord::Migration[5.1]
   def change
     create_table :aws_accounts do |t|
       t.string :name

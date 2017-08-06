@@ -1,4 +1,4 @@
-class CreateAwsEc2InstanceData < ActiveRecord::Migration
+class CreateAwsEc2InstanceData < ActiveRecord::Migration[5.1]
   def change
     create_table :aws_ec2_instance_data do |t|
       t.belongs_to :test_result_aws_ec2_instance, index: true

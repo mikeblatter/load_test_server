@@ -1,4 +1,4 @@
-class CreateTestResults < ActiveRecord::Migration
+class CreateTestResults < ActiveRecord::Migration[5.1]
   def change
     create_table :test_results do |t|
       t.belongs_to :test_schedule, index: true

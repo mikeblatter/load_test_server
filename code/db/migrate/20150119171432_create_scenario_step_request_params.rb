@@ -1,4 +1,4 @@
-class CreateScenarioStepRequestParams < ActiveRecord::Migration
+class CreateScenarioStepRequestParams < ActiveRecord::Migration[5.1]
   def change
     create_table :scenario_step_request_params do |t|
       t.references :user_scenario_step, index: true
