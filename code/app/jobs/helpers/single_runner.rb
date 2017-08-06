@@ -74,6 +74,7 @@ class Helpers::SingleRunner
         params[param.request_key.to_sym] = param.request_value
       }
 
+      puts "Sending Request #{request_type}:#{request_url} #{params}".colorize(:green)
       RestClient.send(request_type, request_url, {:params => params}) { |response, request, result, &block|
         if [301, 302, 307].include? response.code
           response.follow_redirection(request, result, &block)

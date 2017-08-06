@@ -95,6 +95,7 @@ yhPAc8q+jvMQc8Ibo5uJk+aEAStFrJtlODj9Bfr5UGc=
       - db
       - redis
       - cache
+      - web
   db:
     image: mysql:5.7.7
     environment:
