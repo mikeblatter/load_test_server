@@ -42,7 +42,11 @@ class LoadTestsController < ApplicationController
   end
 
   def load_test_params
-    params.require(:load_test).permit(:user_scenario_id, :name,
+    params.require(:load_test).permit(:name,
+                                      user_scenario_steps_attributes:
+                                          [:id, :request_url, :request_type, :step_order, :_destroy,
+                                           scenario_step_request_params_attributes:
+                                               [:id, :request_key, :request_value, :_destroy]],
                                       load_test_schedules_attributes: [:id, :maximum_virtual_users, :duration, :_destroy],
                                       load_test_aws_ec2_instances_attributes: [:id, :aws_ec2_instance_id, :metric, :_destroy],
                                       load_test_aws_rds_instances_attributes: [:id, :aws_rds_instance_id, :metric, :_destroy])

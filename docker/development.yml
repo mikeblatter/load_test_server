@@ -27,6 +27,10 @@ services:
       - db
       - redis
       - cache
+    depends_on:
+      - db
+      - redis
+      - cache
   worker:
     build:
       context: ../
@@ -52,6 +56,10 @@ services:
       - redis
       - cache
       - web
+    depends_on:
+      - db
+      - redis
+      - cache
   db:
     image: mysql:5.7.7
     environment:

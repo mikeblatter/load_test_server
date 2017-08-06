@@ -1,5 +1,6 @@
 class UserScenarioStep < ActiveRecord::Base
-  belongs_to :user_scenario
+  belongs_to :load_test
+  validates :load_test, :presence => true
 
   has_many :scenario_step_request_params, :dependent => :destroy
   accepts_nested_attributes_for :scenario_step_request_params, :reject_if => :all_blank, :allow_destroy => true

@@ -1,13 +1,9 @@
 class LoadTest < ActiveRecord::Base
-  belongs_to :user_scenario
-  validates :user_scenario, presence: true
+  has_many :user_scenario_steps, :dependent => :destroy
+  accepts_nested_attributes_for :user_scenario_steps, :reject_if => :all_blank, :allow_destroy => true
 
   has_many :load_test_schedules, :dependent => :destroy
   accepts_nested_attributes_for :load_test_schedules, :reject_if => :all_blank, :allow_destroy => true
-
-  validate do |load_test|
-    load_test.errors.add(:base, 'Need at least one load test schedule') if load_test.load_test_schedules.length == 0
-  end
 
   has_many :load_test_aws_ec2_instances, :dependent => :destroy
   accepts_nested_attributes_for :load_test_aws_ec2_instances, :reject_if => :all_blank, :allow_destroy => true
@@ -22,6 +18,11 @@ class LoadTest < ActiveRecord::Base
   has_many :test_schedules, :dependent => :destroy
 
   validates :name, uniqueness: true, presence: true
+
+  validate do |load_test|
+    load_test.errors.add(:base, 'Need at least one user scenario step') if load_test.user_scenario_steps.length == 0
+    load_test.errors.add(:base, 'Need at least one load test schedule') if load_test.load_test_schedules.length == 0
+  end
 
   def schedule_graph_set
     schedule_set = Array.new

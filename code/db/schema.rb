@@ -103,11 +103,9 @@ ActiveRecord::Schema.define(version: 20150309192222) do
   end
 
   create_table "load_tests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "user_scenario_id"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_scenario_id"], name: "index_load_tests_on_user_scenario_id"
   end
 
   create_table "scenario_step_request_params", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -188,19 +186,13 @@ ActiveRecord::Schema.define(version: 20150309192222) do
   end
 
   create_table "user_scenario_steps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "user_scenario_id"
+    t.bigint "load_test_id"
     t.string "request_url"
     t.string "request_type"
     t.integer "step_order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_scenario_id"], name: "index_user_scenario_steps_on_user_scenario_id"
-  end
-
-  create_table "user_scenarios", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["load_test_id"], name: "index_user_scenario_steps_on_load_test_id"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

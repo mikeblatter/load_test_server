@@ -16,8 +16,8 @@
     <tbody>
     <% @test_results.each do |test_result| %>
       <tr>
-        <td><%= link_to 'View', test_result %></td>
-        <td><%= link_to test_result.test_schedule.load_test.name, test_result.test_schedule.load_test %></td>
+        <td><%= link_to 'View', test_result, class: "btn btn-info" %></td>
+        <td><%= link_to test_result.test_schedule.load_test.name, test_result.test_schedule.load_test, class: "btn btn-info" %></td>
         <td>
           <% if test_result.in_progress %>
               <button type="button" class="btn btn-info">In Progress</button>

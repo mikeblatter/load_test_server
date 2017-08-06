@@ -1,7 +1,7 @@
 class CreateUserScenarioSteps < ActiveRecord::Migration[5.1]
   def change
     create_table :user_scenario_steps do |t|
-      t.references :user_scenario, index: true
+      t.belongs_to :load_test, index: true
       t.string :request_url
       t.string :request_type
       t.string :response_type

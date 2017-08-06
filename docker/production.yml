@@ -48,6 +48,10 @@ yhPAc8q+jvMQc8Ibo5uJk+aEAStFrJtlODj9Bfr5UGc=
       - db
       - redis
       - cache
+    depends_on:
+      - db
+      - redis
+      - cache
   worker:
     build:
       context: ../
@@ -84,6 +88,10 @@ yhPAc8q+jvMQc8Ibo5uJk+aEAStFrJtlODj9Bfr5UGc=
 "
       RAILS_ENV: "development"
     links:
+      - db
+      - redis
+      - cache
+    depends_on:
       - db
       - redis
       - cache

@@ -33,7 +33,7 @@ class TestJob < Struct.new(:test_schedule)
         :test_result => test_result,
         :test_schedule => test_schedule,
         :load_test_schedules => load_test.load_test_schedules,
-        :steps => load_test.user_scenario.user_scenario_steps
+        :steps => load_test.user_scenario_steps
     }
 
     puts 'Starting RunningMan'.colorize(:green)

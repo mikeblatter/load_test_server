@@ -22,9 +22,8 @@ class LoadTestsControllerTest < ActionController::TestCase
       post :create,
            load_test:
                {
-                   name: @load_test.name + rand(1..1000000).to_s,
-                   user_scenario_id: @load_test.user_scenario_id
-               }
+                   name: @load_test.name + rand(1..1000000).to_s
+                }
     end
 
     assert_redirected_to load_test_path(assigns(:load_test))
@@ -43,8 +42,7 @@ class LoadTestsControllerTest < ActionController::TestCase
   test "should update load_test" do
     patch :update, id: @load_test, load_test:
                      {
-                         name: @load_test.name + rand(1..1000000).to_s,
-                         user_scenario_id: @load_test.user_scenario_id
+                         name: @load_test.name + rand(1..1000000).to_s
                      }
     assert_redirected_to load_test_path(assigns(:load_test))
   end
