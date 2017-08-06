@@ -79,8 +79,6 @@ GEM
     execjs (2.6.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
-    ghost (1.0.0)
-      unindent (= 1.0)
     hike (1.2.3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -193,7 +191,6 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    unindent (1.0)
     warden (1.2.3)
       rack (>= 1.0)
     will_paginate (3.0.7)
@@ -219,7 +216,6 @@ DEPENDENCIES
   delayed_job_active_record (~> 4.0.2)
   devise
   factory_girl (~> 4.5)
-  ghost
   jbuilder (~> 2.0)
   jc-validates_timeliness
   jquery-rails

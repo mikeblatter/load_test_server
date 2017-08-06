@@ -46,11 +46,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring', group: :development
 
-#Print out variables for debugging
+# Print out variables for debugging
 gem 'awesome_print'
-
-#Ghost sets custom hosts
-gem 'ghost'
 
 group :test do
   gem 'minitest'

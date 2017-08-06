@@ -57,6 +57,7 @@ services:
       - db
       - redis
       - cache
+      - web
   db:
     image: mysql:5.7.7
     environment:
