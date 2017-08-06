@@ -7,5 +7,5 @@ class UserScenarioStep < ActiveRecord::Base
 
   validates :request_url, presence: true
   validates :request_type, presence: true
-  validates :step_order, presence: true, uniqueness: { scope: :user_scenario }
+  validates :step_order, presence: true, uniqueness: { scope: :load_test }
 end

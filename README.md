@@ -17,6 +17,7 @@ Password: test1234
 3. Create custom user scenarios by GET/POST against web endpoints with the ability to do params too
 4. Store AWS EC2/RDS instances CloudWatch metric data while load testing is occurring
 5. View test results and metrics data
+6. Latest Rails 5 and Ruby 2.4.1
 
 ## Basic Installation
 

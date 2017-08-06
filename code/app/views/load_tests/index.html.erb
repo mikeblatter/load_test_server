@@ -6,7 +6,7 @@
     <thead>
     <tr>
       <th>Name</th>
-      <th>User Scenario</th>
+      <th># of User Steps</th>
       <th>Dimensions</th>
       <th>Actions</th>
     </tr>
@@ -19,8 +19,7 @@
                        :omission => '...' %>
         </td>
         <td>
-          <%= truncate load_test.user_scenario.name, :length => 25, :separator => /\w/,
-                       :omission => '...' %>
+          <%= load_test.user_scenario_steps.length %>
         </td>
         <td>
           <%= load_test.load_test_schedules.sum(:duration) %> minutes,

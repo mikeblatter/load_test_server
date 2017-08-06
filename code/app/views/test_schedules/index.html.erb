@@ -1,5 +1,5 @@
 <div class="container">
-  <%= render 'shared/index_action_bar', title: 'Test Schedules',
+  <%= render 'shared/index_action_bar', title: 'Scheduled Tests',
              new_object_path: new_test_schedule_path %>
 
   <table class="table table-striped">
@@ -15,7 +15,7 @@
     <tbody>
     <% @test_schedules.each do |test_schedule| %>
       <tr>
-        <td><%= link_to test_schedule.load_test.name, test_schedule.load_test %></td>
+        <td><%= link_to "View: #{test_schedule.load_test.name}", test_schedule.load_test, class: 'btn btn-info' %></td>
         <td>
           <% if test_schedule.schedule_now %>
               <%= time_ago_in_words(test_schedule.created_at) %> ago
