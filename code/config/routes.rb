@@ -18,5 +18,5 @@ Rails.application.routes.draw do
     delete "/logout" => "devise/sessions#destroy", :as => :destroy_user_session
   end
 
-  root "welcome#index"
+  root "test_results#index"
 end
