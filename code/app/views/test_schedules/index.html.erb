@@ -5,6 +5,7 @@
   <table class="table table-striped">
     <thead>
     <tr>
+      <th>Results</th>
       <th>Load
         Test <%= select_tag :load_test_filter, options_for_select(@load_test_name_options, @filter), class: 'btn dropdown-toggle' %></th>
       <th>Scheduled At</th>
@@ -15,6 +16,13 @@
     <tbody>
     <% @test_schedules.each do |test_schedule| %>
       <tr>
+        <td>
+          <% if test_schedule.test_result %>
+              <%= link_to 'View', test_schedule.test_result, :class => 'btn btn-info' %>
+          <% else %>
+              <button type="button" class="btn btn-info disabled">View</button>
+          <% end %>
+        </td>
         <td><%= link_to "View: #{test_schedule.load_test.name}", test_schedule.load_test, class: 'btn btn-info' %></td>
         <td>
           <% if test_schedule.schedule_now %>
@@ -41,12 +49,6 @@
         </td>
         <td>
           <div class="btn-group">
-            <% if test_schedule.test_result %>
-              <%= link_to 'View Results', test_schedule.test_result, :class => 'btn btn-info' %>
-            <% else %>
-              <button type="button" class="btn btn-info disabled">View Results</button>
-            <% end %>
-
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
               Actions <span class="caret"></span>
             </button>
