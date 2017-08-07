@@ -33,7 +33,7 @@ class TestJob < Struct.new(:test_schedule)
         :test_result => test_result,
         :test_schedule => test_schedule,
         :load_test_schedules => load_test.load_test_schedules,
-        :steps => load_test.user_scenario_steps
+        :steps => self.convert_steps(load_test.user_scenario_steps)
     }
 
     puts 'Starting RunningMan'.colorize(:green)
@@ -50,6 +50,18 @@ class TestJob < Struct.new(:test_schedule)
 
     test_result.in_progress = false
     test_result.save
+  end
+
+
+  def convert_steps(steps)
+    steps = steps.to_a
+    steps.each { |step|
+      if step.scenario_step_request_params
+        step.scenario_step_request_params = step.scenario_step_request_params.to_a
+      end
+    }
+
+    return steps
   end
 
   def add_aws_ec2_instances(load_test, test_result)

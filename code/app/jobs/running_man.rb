@@ -6,21 +6,10 @@ class RunningMan
     @test_result = args.fetch :test_result
     @test_schedule = args.fetch :test_schedule
     @load_test_schedules = args.fetch :load_test_schedules
-    @steps = self.convert_steps(args.fetch(:steps))
+    @steps = args.fetch(:steps)
 
     @runners = Array.new
     @former_runners = Array.new
-  end
-
-  def convert_steps(steps)
-    steps = steps.to_a
-    steps.each { |step|
-      if step.scenario_step_request_params
-        step.scenario_step_request_params = step.scenario_step_request_params.to_a
-      end
-    }
-
-    return steps
   end
 
   def duration
