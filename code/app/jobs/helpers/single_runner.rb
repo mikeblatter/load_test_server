@@ -75,10 +75,6 @@ class Helpers::SingleRunner
       }
 
       RestClient.send(request_type, request_url, {:params => params}) { |response, request, result, &block|
-        if [301, 302, 307].include? response.code
-          response.follow_redirection(request, result, &block)
-        end
-
         self.push_data(:response_codes, {:time => start_time, :response_code => response.code})
       }
     }
